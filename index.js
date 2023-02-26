@@ -1,12 +1,11 @@
 const express = require('express');
-// require('dotenv').config({path:'.env'});
+require('dotenv').config();
 const http = require('http');
 const app = express();
 const PORT = process.env.PORT||3000; 
 const cors = require('cors');
 const path = require('path');
 const mongoose = require('mongoose');
-const DB = "mongodb+srv://EmperorAlthaf:ciqGaOvSRHlAca4h@cluster0.wjshxgn.mongodb.net/?retryWrites=true&w=majority"
 const userRouter = require('./routes/userRoute');
 const authRouter = require('./routes/authRoute');
 
@@ -27,7 +26,7 @@ app.use(userRouter);
 mongoose.set('strictQuery',false);
 
 
-mongoose.connect(DB).then(()=>{
+mongoose.connect(process.env.DB).then(()=>{
     console.log(`DB connected successfully`);
 }).catch((e)=>{
     console.log(`THE DB CONNECTION ERROR IS ${e} `);
