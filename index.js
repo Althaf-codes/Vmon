@@ -12,7 +12,7 @@ const authRouter = require('./routes/authRoute');
 
 const server = http.createServer(app);
 
-var io = require('socket.io')(server);
+
 
 app.use(
     cors({
@@ -27,10 +27,6 @@ app.use(userRouter);
 mongoose.set('strictQuery',false);
 
 
-io.on("connection",(socket)=>{
-    console.log(`Socket connected successfully`);
-
-})
 mongoose.connect(DB).then(()=>{
     console.log(`DB connected successfully`);
 }).catch((e)=>{
@@ -44,6 +40,3 @@ server.listen(PORT,"0.0.0.0",()=>{
 })
 
 
-module.exports.getIO = function(){
-    return io;
-}

@@ -3,8 +3,8 @@ const userRouter = express.Router();
 const auth  =require('../middleware/auth');
 const {User} = require('../models/userSchema'); 
 const bcrypt = require('bcrypt');
-var server = require('../index');
-const { Socket } = require('socket.io');
+
+
 //var io = server.getIO;
 
 
