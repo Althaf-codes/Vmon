@@ -117,7 +117,11 @@ authRouter.post("/api/signup",async (req,res)=>{
   });
   
   
-  authRouter.get("/", auth, async (req, res) => {
+authRouter.get('/',async(req,res)=>{
+  res.status(200).json({"msg":"Hi from welcome page"});
+})
+
+  authRouter.post("/", auth, async (req, res) => {
     const user = await User.findById(req.user);
     res.json({ ...user._doc, token: req.token });
   });
